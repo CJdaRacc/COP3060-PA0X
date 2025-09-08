@@ -2,15 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Awesome Website</title>
-        <h1> Hello there! My name is Calvin Mitchell, and I'm a fourth-year computer information systems major from Homestead, FL.
-          I've had my hands on the internet and technology for as long as I can remember. My first interaction with any kind of big tech,
-          other than my mom's Samsung Galaxy S III, was a bulky, white Dell(?) computer that my babysitter owned. She couldn't use it much because
-          it used a lot of electricity in their home, so the one video I remember vividly is LMFAO's - I'm Sexy and I Know It on YouTube during it's
-          heyday. She showed me more videos and Flash games that could never run on my mom's old laptop. After that, I fell in love with the computer, and it introduced me to a world that I never thought existed in my young mind, and here we are. Currently, I'm working on an at-home media and file-dumping server for my own use. It's simply for easily accessing files without storing them locally, but I'm still figuring out the kinks. Other
-          projects I've worked on are a natural disaster relief AI program that I believe could be a game-changer, but it's still in its infancy  ¯\_(ツ)_/¯. </h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+
+<h1>Hello there! My name is Calvin Mitchell, and I'm a fourth-year computer information systems major from Homestead, FL.
+    I've had my hands on the internet and technology for as long as I can remember. My first interaction with any kind of big tech,
+    other than my mom's Samsung Galaxy S III, was a bulky, white Dell(?) computer that my babysitter owned. She couldn't use it much because
+    it used a lot of electricity in their home, so the one video I remember vividly is LMFAO's - I'm Sexy and I Know It on YouTube during its
+    heyday. She showed me more videos and Flash games that could never run on my mom's old laptop. After that, I fell in love with the computer, and it introduced me to a world that I never thought existed in my young mind, and here we are. Currently, I'm working on an at-home media and file-dumping server for my own use. It's simply for easily accessing files without storing them locally, but I'm still figuring out the kinks. Other
+    projects I've worked on are a natural disaster relief AI program that I believe could be a game-changer, but it's still in its infancy  ¯\_(ツ)_/¯.
+</h1>
+
+<h2>User Registration Form</h2>
+<form action="#" method="post">
+    <div class="form-group">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" required>
+    </div>
+    <div class="form-group">
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+        <p>Do you like my site?</p>
+        <input type="radio" id="yes" name="site_like" value="yes">
+        <label for="yes">Yes</label><br>
+        <input type="radio" id="no" name="site_like" value="no">
+        <label for="no">No</label>
+    </div>
+
+    <div class="form-group">
+        <input type="checkbox" id="newsletter" name="newsletter">
+        <label for="newsletter">check if you want a free cookie</label>
+    </div>
+
+    <div class="form-group">
+        <label for="browser">Which browser do you use?</label>
+        <select id="browser" name="browser">
+            <option value="opera">Opera</option>
+            <option value="firefox">Mozilla Firefox</option>
+            <option value="safari">Apple Safari</option>
+            <option value="edge">Microsoft Edge</option>
+            <option value="chrome">Google Chrome</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
 
 </body>
 </html>
