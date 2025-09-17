@@ -1,24 +1,38 @@
-/* Type selectors */
+/* Consistent font across the page */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #222;
     line-height: 1.6;
 }
 
+/* Distinctive heading colors */
 h1 {
     color: #2c3e50;
+    margin-bottom: 0.5rem; /* Box model example */
 }
 
-/* Class selector */
+h2 {
+    color: #8e44ad;
+    margin-top: 1.5rem; /* Box model example */
+}
+
+/* Type selector for paragraphs */
+p {
+    line-height: 1.7;
+}
+
+/* Class selector to change paragraph text color */
 .highlight {
-    background-color: #fff3cd;
-    color: #8a6d3b;
-    padding: 0.2em 0.4em;
+    color: #d35400;            /* Text color change */
+    background: #fff4e6;
+    padding: 0.25rem 0.5rem;   /* Box model: padding */
     border-radius: 4px;
 }
 
-/* ID selector */
+/* ID selector to make an element stand out */
 #special {
-    border: 2px dashed #4caf50;
-    padding: 10px;
-    background-color: #f6fffb;
+    border-left: 4px solid #27ae60;
+    background: #f0fff6;
+    padding: 12px 16px;        /* Box model: padding */
+    margin: 16px 0;            /* Box model: margin */
 }
