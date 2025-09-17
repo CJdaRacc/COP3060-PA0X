@@ -1,0 +1,24 @@
+/* Type selectors */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+/* Class selector */
+.highlight {
+    background-color: #fff3cd;
+    color: #8a6d3b;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+/* ID selector */
+#special {
+    border: 2px dashed #4caf50;
+    padding: 10px;
+    background-color: #f6fffb;
+}
