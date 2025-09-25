@@ -18,6 +18,5 @@ This repo contains coursework demos for PA0X.
   - Base: https://jsonplaceholder.typicode.com
   - Endpoint: `/users` (no authentication required)
 
-## Notes about commits
-If you are submitting this assignment, make at least 6 meaningful commits with clear messages describing each change (e.g., "Add app.js with validation & fetch", "Wire up event listeners", "Render users grid").
+
 
