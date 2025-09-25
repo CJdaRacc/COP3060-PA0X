@@ -112,3 +112,93 @@ function onEmailInput() {
     }
 }
 
+// -----------------------------
+// Fetch (AJAX) demo using JSONPlaceholder (public, no auth)
+// Endpoint: https://jsonplaceholder.typicode.com/users
+// -----------------------------
+let usersCache = [];
+
+function buildUrl(resource) {
+    const base = "https://jsonplaceholder.typicode.com";
+    return `${base}/${resource}`;
+}
+
+function cardHtml(user) {
+    const company = user.company?.name ?? "(no company)";
+    const city = user.address?.city ?? "(unknown city)";
+    return `
+    <div class="card">
+      <h3>${user.name}</h3>
+      <p><strong>Username:</strong> ${user.username}</p>
+      <p><strong>Email:</strong> ${user.email}</p>
+      <p><strong>Company:</strong> ${company}</p>
+      <p class="muted">${city}</p>
+    </div>
+  `;
+}
+
+function renderUsers(list) {
+    const container = $("#results");
+    if (!container) return;
+    container.innerHTML = "";
+    if (!list || list.length === 0) {
+        $("#fetchStatus").textContent = "No results to display.";
+        return;
+    }
+    const take = list.slice(0, Math.max(10, Math.min(list.length, 50))); // render ≥10 or all if fewer
+    container.innerHTML = take.map(cardHtml).join("");
+}
+
+function sortUsers(list, how) {
+    const [field, dir] = how.split("-");
+    const factor = dir === "desc" ? -1 : 1;
+    return [...list].sort((a, b) => {
+        const va = field === "company" ? (a.company?.name ?? "") : (a.name ?? "");
+        const vb = field === "company" ? (b.company?.name ?? "") : (b.name ?? "");
+        return va.localeCompare(vb) * factor;
+    });
+}
+
+async function loadUsers() {
+    const status = $("#fetchStatus");
+    const btn = $("#loadUsersBtn");
+    try {
+        status.textContent = "Loading…";
+        btn.disabled = true;
+        const url = buildUrl("users");
+        const res = await fetch(url, { headers: { Accept: "application/json" } });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error("Unexpected response shape");
+        usersCache = data; // keep in memory
+        status.textContent = `Loaded ${usersCache.length} users.`;
+        const how = $("#sortSelect").value;
+        renderUsers(sortUsers(usersCache, how));
+    } catch (err) {
+        console.error(err);
+        status.textContent = "Sorry, something went wrong while loading users.";
+    } finally {
+        btn.disabled = false;
+    }
+}
+
+function onSortChange() {
+    if (usersCache.length === 0) return;
+    const how = $("#sortSelect").value;
+    renderUsers(sortUsers(usersCache, how));
+}
+
+// -----------------------------
+// Wire up events on DOMContentLoaded (but script is defer, so DOM is ready)
+// -----------------------------
+(function init() {
+    // Render hobbies list using a loop
+    renderHobbies(hobbies);
+
+    // Event listeners (≥2): submit, input, click/change
+    const form = $("#regForm");
+    form?.addEventListener("submit", onFormSubmit);
+    $("#email")?.addEventListener("input", onEmailInput);
+    $("#loadUsersBtn")?.addEventListener("click", loadUsers);
+    $("#sortSelect")?.addEventListener("change", onSortChange);
+})();
