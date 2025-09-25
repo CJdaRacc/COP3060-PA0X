@@ -21,7 +21,7 @@
             padding: 20px;
             border-radius: 5px;
             max-width: 500px;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
         .form-group {
             margin-bottom: 15px;
@@ -70,7 +70,15 @@
             background-color: #f2f2f2;
             font-weight: bold;
         }
+        .muted { color: #555; font-size: 0.9em; }
+        #status { margin: 10px 0 20px; padding: 8px; border-radius: 4px; }
+        #status.ok { background: #e8fff0; border: 1px solid #27ae60; }
+        #status.err { background: #fff0f0; border: 1px solid #e74c3c; }
+        #results { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 10px; }
+        .card { border: 1px solid #ddd; border-radius: 6px; padding: 10px; background: #fff; }
+        .controls { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
     </style>
+    <script src="app.js" defer></script>
 </head>
 <body>
 
@@ -113,7 +121,7 @@
 
 
 <h2>User Registration Form</h2>
-<form action="#" method="post">
+<form id="regForm" action="#" method="post">
     <div class="form-group">
         <label for="fname">First Name:</label>
         <input type="text" id="fname" name="fname" required>
@@ -158,6 +166,23 @@
 
     <button type="submit">Submit</button>
 </form>
+<div id="status" aria-live="polite" class="muted">Fill the form and submit to validate.</div>
+
+<h2>My Hobbies (Rendered with JS)</h2>
+<ul id="hobbyList"></ul>
+
+<h2>Public Users (Fetched)</h2>
+<div class="controls">
+    <button id="loadUsersBtn" type="button">Load Users</button>
+    <label for="sortSelect" class="muted">Sort:</label>
+    <select id="sortSelect">
+        <option value="name-asc">Name A–Z</option>
+        <option value="name-desc">Name Z–A</option>
+        <option value="company-asc">Company A–Z</option>
+    </select>
+</div>
+<div id="fetchStatus" class="muted"></div>
+<div id="results"></div>
 
 
 </body>
