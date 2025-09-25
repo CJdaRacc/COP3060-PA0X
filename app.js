@@ -1,6 +1,6 @@
 // app.js
 // Log a short welcome line and the repo URL; keep console clean of errors.
-console.log("Welcome to COP3060-PA0X demo! Repo: https://github.com/cmitc/COP3060-PA0X");
+console.log("Welcome to COP3060-PA0X demo! Repo: https://github.com/CJdaRacc/COP3060-PA0X");
 
 // -----------------------------
 // Variables, Types, Operators
@@ -30,7 +30,9 @@ if (isExactCourse && yearsUntilGrad >= 0) {
 // -----------------------------
 // DOM helpers
 // -----------------------------
+const hasDOM = typeof window !== "undefined" && typeof document !== "undefined";
 function $(selector) {
+    if (!hasDOM) return null;
     return document.querySelector(selector);
 }
 
@@ -54,6 +56,7 @@ function clearStatus() {
 // Loop render: hobbies list (5–10 items)
 // -----------------------------
 function renderHobbies(list) {
+    if (!hasDOM) return;
     const ul = $("#hobbyList");
     if (!ul) return;
     ul.innerHTML = "";
@@ -192,6 +195,7 @@ function onSortChange() {
 // Wire up events on DOMContentLoaded (but script is defer, so DOM is ready)
 // -----------------------------
 (function init() {
+    if (!hasDOM) return; // Only run in a browser environment with DOM
     // Render hobbies list using a loop
     renderHobbies(hobbies);
 
